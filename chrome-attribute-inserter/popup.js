@@ -37,12 +37,30 @@ function setAttributes() {
       ["stamina", "stamina"],
       ["strength", "strength"],
       ["longShots", "long_shots"],
+      ["aggression", "aggression"],
+      ["interceptions", "interceptions"],
+      ["positioning", "att_position"],
+      ["vision", "vision"],
+      ["penalties", "penalties"],
+      ["composure", "composure"],
+      ["marking", "def_aware"],
+      ["standingTackle", "stand_tackle"],
+      ["slidingTackle", "slide_tackle"],
+      ["gkDiving", "gkDiving"],
+      ["gkHandling", "gkHandling"],
+      ["gkKicking", "gkKicking"],
+      ["gkPositioning", "gkPositioning"],
+      ["gkReflexes", "gkReflexes"],
     ];
     const attributes = JSON.parse(attributeJSON);
 
     inputs.map(([inputName, attributeName]) => {
-      document.querySelector(`input[name="${inputName}"]`).value =
-        attributes[attributeName];
+      const input = document.querySelector(`input[name="${inputName}"]`);
+      if (input !== undefined) {
+        input.value = attributes[attributeName];
+        const event = new Event("change", { bubbles: true });
+        input.dispatchEvent(event);
+      }
     });
   });
 }
