@@ -3,6 +3,7 @@ import numpy as np
 import cv2 as cv
 import re
 
+from attribute import Attribute
 
 def load_image():
     return cv.imread("./image.jpg")
@@ -30,12 +31,46 @@ def main():
     img = grayscale(img)
     img = gaussian_blur(img)
     image_text = pytesseract.image_to_string(img, lang="eng")
+    attribute_map = [
+        Attribute(label, f'{label} ?([0-9]+)') for label in [
+            "Sprint Speed",
+            "Finishing",
+            "Vision",
+            "Agility",
+            "Interceptions",
+            "Jumping",
+            "Wide Back Acceleration",
+            "Att. Position",
+            "Crossing",
+            "Balance",
+            "Heading Acc.",
+            "Stamina",
+            "Shot Power",
+            "FK Acc.",
+            "Reactions",
+            "Def.Aware",
+            "Strength",
+            "LongShots",
+            "Long Pass ",
+            "Composure",
+            "Stand Tackle",
+            "Aggression",
+            "Penalties",
+            "ShortPass",
+            "Ball Control",
+            "Slide Tackle",
+            "Volleys",
+            "Curve",
+            "Dribbling",
+        ]
 
-    sprint_speed = re.findall('Sprint Speed ([0-9]+)', image_text)[0]
-    acceleration = re.findall('Acceleration ([0-9]+)', image_text)[0]
-    finishing = re.findall('Finishing ?([0-9]+)', image_text)[0]
+    ]
 
-    print(sprint_speed, acceleration, finishing)
+
+    for att in attribute_map:
+        att.apply(image_text)
+        print(att)
+
 
 
 
