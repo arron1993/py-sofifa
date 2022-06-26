@@ -1,7 +1,7 @@
 import pytesseract
 import numpy as np
 import cv2 as cv
-import re
+import json
 
 from attribute import Attribute
 
@@ -39,7 +39,7 @@ def main():
             "Agility",
             "Interceptions",
             "Jumping",
-            "Wide Back Acceleration",
+            "Acceleration",
             "Att. Position",
             "Crossing",
             "Balance",
@@ -48,28 +48,29 @@ def main():
             "Shot Power",
             "FK Acc.",
             "Reactions",
-            "Def.Aware",
+            "Def. Aware",
             "Strength",
-            "LongShots",
-            "Long Pass ",
+            "Long Shots",
+            "Long Pass",
             "Composure",
             "Stand Tackle",
             "Aggression",
             "Penalties",
-            "ShortPass",
+            "Short Pass",
             "Ball Control",
             "Slide Tackle",
             "Volleys",
             "Curve",
             "Dribbling",
         ]
-
     ]
 
 
-    for att in attribute_map:
-        att.apply(image_text)
-        print(att)
+    atts = {att.key: att.apply(image_text) for att in attribute_map}
+    print(json.dumps(atts))
+
+
+
 
 
 
