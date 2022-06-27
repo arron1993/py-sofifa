@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-12 col-lg-6">
         <form #collectorForm="ngForm" (ngSubmit)="onSubmit()">
-            <div>
+            <div class="mb-3">
                 <input class="form-control" (change)="onChange($event)" type="file" />
             </div>
             <div>
-                <button class="btn btn-primary">Upload</button>
+                <button class="w-100 btn btn-primary">Upload</button>
             </div>
         </form>
     </div>
