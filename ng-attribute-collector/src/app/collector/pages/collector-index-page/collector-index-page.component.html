@@ -1,0 +1,10 @@
+<app-collector-form (onUpload)="results = $event"></app-collector-form>
+
+<ng-container *ngIf="results">
+    <div class="row pt-5">
+        <div class="col-12">
+            {{results | json}}
+        </div>
+    </div>
+
+</ng-container>

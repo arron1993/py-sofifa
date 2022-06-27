@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-12 col-lg-6">
+        <form #collectorForm="ngForm" (ngSubmit)="onSubmit()">
+            <div>
+                <input class="form-control" (change)="onChange($event)" type="file" />
+            </div>
+            <div>
+                <button class="btn btn-primary">Upload</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-12 col-lg-6">
+        <ng-container *ngIf="imgPreview">
+            <img height="400px" [src]="imgPreview"/>
+        </ng-container>
+    </div>
+</div>
+
+
