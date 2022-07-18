@@ -14,6 +14,7 @@ class Collector():
         img = self.grayscale(img)
         img = self.gaussian_blur(img)
         self.img = img
+        self.save(img)
 
 
     def collect(self):
@@ -78,18 +79,6 @@ class Collector():
 
     def invert(self, img):
         return cv.bitwise_not(img)
-
-
-def main():
-
-
-    print()
-
-
-
-
-
-
 
 
 if __name__ == '__main__':

@@ -21,4 +21,4 @@ class CollectorAPI(MethodView):
 app.add_url_rule('/api/collector/', view_func=CollectorAPI.as_view('collector'))
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")

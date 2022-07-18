@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Stats } from '../../classes/stats';
 
 
 @Component({
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./collector-index-page.component.scss']
 })
 export class CollectorIndexPageComponent implements OnInit {
-  results = "";
+  results: Stats|null = null;
+
   constructor() { }
 
   ngOnInit(): void {

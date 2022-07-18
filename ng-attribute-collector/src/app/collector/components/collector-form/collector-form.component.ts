@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Stats } from '../../classes/stats';
 import { CollectorService } from '../../services/collector.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { CollectorService } from '../../services/collector.service';
   styleUrls: ['./collector-form.component.scss']
 })
 export class CollectorFormComponent implements OnInit {
-  @Output() onUpload = new EventEmitter<string>()
+  @Output() onUpload = new EventEmitter<Stats|null>()
 
   file: any = null;
   imgPreview: any = null;
@@ -25,8 +26,11 @@ export class CollectorFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.onUpload.emit(null)
     this.cs.upload(this.file).subscribe((resp: any) => {
-      this.onUpload.emit(resp)
+      console.log(resp)
+      const stats = new Stats(resp)
+      this.onUpload.emit(stats)
     })
   }
 
