@@ -4,12 +4,12 @@ import re
 class Attribute:
     def __init__(self, label, regex):
         self.label = label
-        self.key = self.label.strip().lower().replace(" ", '_').replace(".", "")
+        self.key = self.label.strip().lower().replace(" ", "_").replace(".", "")
         self.regex = regex
         self.value = None
 
     def __repr__(self):
-        return f'{self.label} {self.value}'
+        return f"{self.label} {self.value}"
 
     def apply(self, text):
         matches = re.findall(self.regex.replace(" ", " ?"), text)
@@ -17,5 +17,3 @@ class Attribute:
             self.value = matches[0]
 
         return self.value
-
-
